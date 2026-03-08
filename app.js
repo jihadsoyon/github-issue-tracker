@@ -44,3 +44,29 @@ container.innerHTML += card
 })
 
 }
+
+function filterIssues(type){
+
+document.querySelectorAll(".tab").forEach(tab =>
+tab.classList.remove("tab-active")
+)
+
+event.target.classList.add("tab-active")
+
+if(type === "all"){
+
+displayIssues(issuesData)
+
+}
+
+else{
+
+const filtered = issuesData.filter(issue =>
+issue.status === type
+)
+
+displayIssues(filtered)
+
+}
+
+}
