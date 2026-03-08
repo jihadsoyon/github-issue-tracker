@@ -26,7 +26,7 @@ placeholder="Search issues..."
 class="input input-bordered input-sm"
 />
 
-<button class="btn btn-primary btn-sm">
+<button onclick="searchIssue()" class="btn btn-primary btn-sm">
 Search
 </button>
 </div>
@@ -37,9 +37,9 @@ Search
 
 <!-- TABS -->
 <div class="tabs tabs-boxed mb-6">
-<button onclick="filterIssues('all')" class="tab tab-active">All</button>
-<button onclick="filterIssues('open')" class="tab">Open</button>
-<button onclick="filterIssues('closed')" class="tab">Closed</button>
+<button id="allTab" onclick="filterIssues('all')" class="tab tab-active">All</button>
+<button id="openTab" onclick="filterIssues('open')" class="tab">Open</button>
+<button id="closedTab" onclick="filterIssues('closed')" class="tab">Closed</button>
 </div>
 
 <!-- HEADER -->
@@ -60,13 +60,86 @@ Track and manage project issues
 
 </div>
 
+
+<div class="flex gap-4 text-sm">
+
+
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-green-500 rounded-full"></div>
+Open
 </div>
 
-<div id="issuesContainer"
-class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-purple-500 rounded-full"></div>
+Closed
 </div>
 
+
 </div>
+
+
+</div>
+
+
+
+
+<!-- LOADING -->
+
+
+<div id="loader" class="text-center py-10 hidden">
+<span class="loading loading-spinner loading-lg"></span>
+</div>
+
+
+
+
+<!-- ISSUES GRID -->
+
+
+<div
+id="issuesContainer"
+class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+></div>
+
+
+</div>
+
+
+
+
+<!-- MODAL -->
+
+
+<dialog id="issueModal" class="modal">
+
+
+<div class="modal-box">
+
+
+<h3 id="modalTitle" class="font-bold text-lg"></h3>
+
+
+<p id="modalDesc" class="py-2"></p>
+
+
+<p id="modalStatus"></p>
+<p id="modalAuthor"></p>
+<p id="modalPriotity" ></p>
+<p id="modalDate"></p>
+<div class="modal-action">
+<form method="dialog">
+<button class="btn btn-primary">Close</button>
+</form>
+</div>
+
+
+</div>
+
+
+</dialog>
+
+
 
 <script src="app.js"></script>
 
